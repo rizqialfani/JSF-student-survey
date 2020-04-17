@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:mcv="http://myfaces.apache.org/commons/validators">
+<h:head>
+<title>Survei Mahasiswa</title>
+<link href="./css/styles.css" rel="stylesheet" type="text/css"/>
+</h:head>
+<h:body>
+<div align="center">
+<h2 class="title">Survei Penilaian Mahasiswa Terhadap Layanan Laboratorium Teknik Komputer</h2><br/>
+Survei ini dilakukan untuk mengetahui seberapa kepuasan mahasiswa terhadap
+pelayanan laboratorium di Teknik Komputer.
+Terimakasih atas data yang anda berikan. 
+<fieldset>
+<legend>Penilaian Mahasiswa</legend>
+<h:form>
+<h:panelGrid columns="3" styleClass="formTable">
+  Nama Lengkap : 
+  <h:inputText value="#{errorReportBean1.name}" 
+               required="true"
+               requiredMessage="Masukkan Jawaban Anda"
+               id="name"/>
+  <h:message for="name"/>
+  
+  Nomor Induk Mahasiswa :
+  <h:inputText value="#{errorReportBean1.problemDescription}" 
+                   required="true"
+                   requiredMessage="Masukkan Jawaban Anda"
+                   id="description"/>
+  <h:message for="description"/>
+  
+  Alamat Email :
+  <h:inputText value="#{errorReportBean1.emailAddress}" 
+               required="true"
+               requiredMessage="Masukkan Jawaban Anda"
+               validatorMessage="Invalid email address"
+               id="email">
+    <mcv:validateEmail/> 
+  </h:inputText>
+  <h:message for="email"/>
+  
+    Apakah laboratorium tersedia di kampus anda : 
+  <h:inputTextarea value="#{errorReportBean1.url}" 
+                   required="true"
+                   requiredMessage="Masukkan Jawaban Anda"
+                   id="url"/>
+  <h:message for="url"/>
+  
+  Bagaimana kelengkapan dari peralatan laboratorium yang ada :
+  <h:inputTextarea value="#{errorReportBean1.cardNumber}" 
+                   required="true"
+                   requiredMessage="Masukkan Jawaban Anda"
+                   id="cardNumber"/>
+  <h:message for="cardNumber"/>
+  
+  Apa saran anda untuk peningkatan kualitas layanan laboratorium :
+  <h:inputTextarea value="#{errorReportBean1.cardNumberConfirmation}" 
+                   required="true"
+                   requiredMessage="Masukkan Jawaban Anda"
+                   id="cardNumberConfirmation"/>
+  <h:message for="cardNumberConfirmation"/>
+
+<h:commandButton value="Submit Report" 
+                   action="#{errorReportBean1.sendReport}"/>
+  
+</h:panelGrid>
+  
+</h:form>
+</fieldset>
+
+<br/><hr/>
+</div></h:body></html>
