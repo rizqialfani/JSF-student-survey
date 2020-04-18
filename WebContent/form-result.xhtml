@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:mcv="http://myfaces.apache.org/commons/validators">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="https://demo.tutorialzine.com/2018/05/the-easiest-way-to-add-input-masks/assets/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://demo.tutorialzine.com/2018/05/the-easiest-way-to-add-input-masks/assets/css/demo.css"/>
+    <title>Form Survei Mahasiswa Undip</title>
+</h:head>
+<h:body>
+    <h1 style="text-align:center; margin-top: 50px;">Hasil Survei</h1>
+    <h3 style="text-align:center;">Terima kasih telah mengisi survei kami</h3>
+    <div class="container-fluid">
+        <div class="registration-form">
+         <form>
+         	<div class="form-group">
+         		<button href="#{request.contextPath}/" class="btn btn-block create-account">Isi Form Lagi</button>
+         	</div>
+            <div>
+                <table class="table table-sm table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th style="text-align:center;">Input</th>
+                            <th style="text-align:center;">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nama Depan</td>
+                            <td>#{survei.namaDepan}</td>
+                        </tr>
+                        <tr>
+                            <td>Nama Belakang</td>
+                            <td>#{survei.namaBelakang}</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td>#{survei.alamat}</td>
+                        </tr>
+                        <tr>
+                            <td>Kota/Kabupaten</td>
+                            <td>#{survei.kotaKab}</td>
+                        </tr>
+                        <tr>
+                            <td>Provinsi/Negara Bagian</td>
+                            <td>#{survei.provinsiNeBag}</td>
+                        </tr>
+                        <tr>
+                            <td>Kode Pos</td>
+                            <td>#{survei.kodePos}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>#{survei.email}</td>
+                        </tr>
+                        <tr>
+                            <td>Nomer Telepon</td>
+                            <td>#{survei.nomerTelepon}</td>
+                        </tr>
+                        <tr>
+                            <td>Tanggal Survei</td>
+                            <td id="tgl">#{survei.tanggalSurvei}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+         </form>
+         <div class="social-media">
+         	<h2>Data Diri</h2>
+         </div>
+        </div>
+        
+        <div class="registration-form">
+         <form>
+            <div>
+                <table class="table table-sm table-bordered">
+                    <thead class="thead-light">
+                    <tr>
+                        <th style="text-align:center;">Input</th>
+                        <th style="text-align:center;">Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Aspek yang disenangi dari UNDIP</td>
+                        <td id="checkbox-output"><ui:repeat value = "#{survei.checkBoxInput}" var = "s">
+                            #{s},&nbsp;
+                        </ui:repeat></td>
+                    </tr>
+                    <tr>
+                        <td>Bagaimana anda mengetahui UNDIP?</td>
+                        <td>#{survei.radioButtonInput}</td>
+                    </tr>
+                    <tr>
+                        <td>Seberapa kemungkinan anda merekomendasikan UNDIP?</td>
+                        <td>#{survei.dropdownInput}</td>
+                    </tr>
+                    <tr>
+                        <td>Tambahan lainnya</td>
+                        <td>#{survei.commentInput}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+         </form>
+         <div class="social-media">
+         	<h2>Form Opini</h2>
+         </div>
+        </div>
+        <p id="status" style="visibility: hidden">#{survei.isFormFilled}</p>
+        <p id="rootpath" style="visibility: hidden">#{request.contextPath}/</p>
+    </div>
+</h:body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.10/dist/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/moment.js"></script>
+
+</html>

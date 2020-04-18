@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:mcv="http://myfaces.apache.org/commons/validators">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="https://demo.tutorialzine.com/2018/05/the-easiest-way-to-add-input-masks/assets/css/style.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="https://demo.tutorialzine.com/2018/05/the-easiest-way-to-add-input-masks/assets/css/demo.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <!--===============================================================================================-->
+	<title>Form Survei Mahasiswa Undip</title>
+</h:head>
+<h:body>
+    <div class="container-fluid">
+        <div class="registration-form">
+            <h:form>
+                <h2 style="text-align: center;">Form Survei Mahasiswa Undip</h2>
+                <div class="form-icon">
+                	<img src="https://s3.amazonaws.com/mr.al-21296/logo-icon.png" alt="Universitas Diponegoro" style="width: 120px; vertical-align: middle; margin-top: 10px;"/>
+                </div>
+                <div>
+					<h:messages style="color: red"/>
+                </div>
+                <div class="form-group">
+                    <h:inputText value="#{survei.namaDepan}" required="true" requiredMessage="Masukkan nama depan anda" id="namaDepan" styleClass="form-control item" pt:placeholder="Nama Depan"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="form-group">
+                    <h:inputText value="#{survei.namaBelakang}" required="true" requiredMessage="Masukkan nama belakang anda" id="namaBelakang" styleClass="form-control item" pt:placeholder="Nama Belakang"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="form-group">
+                    <h:inputText value="#{survei.alamat}" required="true" requiredMessage="Masukkan alamat anda" id="alamat" styleClass="form-control item" pt:placeholder="Alamat"/>                   
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="form-group">
+                    <h:inputText value="#{survei.kotaKab}" required="true" requiredMessage="Masukkan kota/kabupaten anda" id="kotaKab" styleClass="form-control item" pt:placeholder="Kota/Kabupaten"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="form-group">
+                    <h:inputText value="#{survei.provinsiNeBag}" required="true" requiredMessage="Masukkan nama provinsi/negara bagian anda" id="provinsiNeBag" styleClass="form-control item" pt:placeholder="Provinsi/Negara Bagian"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="form-group">
+                    <h:inputText value="#{survei.kodePos}" required="true" requiredMessage="Masukkan kode pos anda" id="kodePos" styleClass="form-control item" pt:placeholder="Kode Pos"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="form-group">
+                    <h:inputText value="#{survei.email}" required="true" requiredMessage="Masukkan email anda dengan benar" id="email" validatorMessage="Email tidak valid." styleClass="form-control item" pt:placeholder="Email">
+                        <mcv:validateEmail/>
+                    </h:inputText>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="form-group">
+                    <h:inputText value="#{survei.nomerTelepon}" required="true" requiredMessage="Masukkan nomer telepon anda" validatorMessage="Nomor telepon tidak valid. Contoh: +62xxxxxxx" id="nomerTelepon" styleClass="form-control item" pt:placeholder="Nomor Telepon">
+                        <f:validateRegex pattern="^[+]?[0-9]+$" />
+                    </h:inputText>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="form-group">
+                	<label>Tanggal Survei</label>
+                    <h:inputText value="#{survei.tanggalSurvei}" id="tanggalSurvei" required="true" requiredMessage="Tanggal survei diperlukan" converterMessage="Maaf, format tanggal tidak didukung" styleClass="form-control item" pt:placeholder="MM/DD/YYYY">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:inputText>
+                </div>
+                <div class="form-group">
+                    <label>Aspek yang disenangi dari UNDIP</label>
+                    <h:selectManyCheckbox value = "#{survei.checkBoxInput}" required="true" requiredMessage="Masukkan pilihan anda" id="checkBoxInput" layout="pageDirection" selectedClass="inline-label" unselectedClass="inline-label">
+                        <f:selectItem itemValue = "Siswa" itemLabel = "Siswa" class="form-check"/>
+                        <f:selectItem itemValue = "Kampus" itemLabel = "Kampus" class="form-check" />
+                        <f:selectItem itemValue = "Kamar Asrama" itemLabel = "Kamar Asrama" class="form-check" />
+                        <f:selectItem itemValue = "Lokasi" itemLabel = "Lokasi" class="form-check" />
+                        <f:selectItem itemValue = "Suasana" itemLabel = "Suasana" class="form-check" />
+                        <f:selectItem itemValue = "Olahraga" itemLabel = "Olahraga" class="form-check" />
+                    </h:selectManyCheckbox>
+                </div>
+                <div class="form-group">
+                    <label>Bagaimana anda mengetahui UNDIP?</label>
+                    <h:selectOneRadio value = "#{survei.radioButtonInput}" required="true" requiredMessage="Masukkan pilihan anda" id="radioButtonInput" styleClass="radio-inline">
+                        <f:selectItem itemValue = "Teman" itemLabel = "Teman"/>
+                        <f:selectItem itemValue = "Internet" itemLabel = "Internet" />
+                        <f:selectItem itemValue = "Televisi" itemLabel = "Televisi" />
+                        <f:selectItem itemValue = "Lainnya" itemLabel = "Lainnya" />
+                    </h:selectOneRadio>
+                </div>
+                <div class="form-group">
+                    <label>Seberapa kemungkinan anda merekomendasikan UNDIP?</label>
+                    <h:selectOneMenu value = "#{survei.dropdownInput}" required="true" requiredMessage="Masukkan pilihan anda" id="dropdownInput" class="custom-select item" style="height: 50px; width: 100%">
+                        <f:selectItem itemValue = "Sangat Mungkin" itemLabel = "Sangat mungkin"/>
+                        <f:selectItem itemValue = "Mungkin saja" itemLabel = "Mungkin saja" />
+                        <f:selectItem itemValue = "Tidak Mungkin" itemLabel = "Tidak mungkin" />
+                    </h:selectOneMenu>
+                </div>
+                <div class="form-group">
+                	<label>Komentar Tambahan</label>
+                    <h:inputTextarea
+                            styleClass="form-control item"
+                            value = "#{survei.commentInput}"
+                            pt:placeholder="Informasi Tambahan" rows="3"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="form-group">
+                    <h:commandButton action="#{survei.submitData}" value="Submit" styleClass="btn btn-block create-account"> </h:commandButton>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-block create-account" id="resetButton">Reset</button>
+                </div>
+            </h:form>
+            <div class="social-media">
+                <div class="form-group" style="margin-left: 150px;">
+                    <a class="btn btn-block create-account" href="https://ec2-3-85-166-70.compute-1.amazonaws.com" style="width: 300px; background-color: #5cb85c;">Kembali ke Halaman Utama</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.10/dist/sweetalert2.all.min.js"></script>
+<script type="text/javascript">
+    document.getElementById("resetButton").addEventListener("click", function(event){
+        event.preventDefault();
+        confirmReset();
+    });
+    function confirmReset() {
+        Swal.fire({
+            title: "Anda yakin akan mereset data?",
+            text: "Data yang anda isikan akan hilang",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#dd3333",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: 'Reset Form',
+            cancelButtonText: 'Batalkan'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    "Reset!",
+                    "Data berhasil direset.",
+                    "success"
+                ).then(() => {
+                    //$('input').get(0).nextSibling.remove();
+                    document.getElementById('j_idt6').reset();
+                    //location.reload();
+                });
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    "Dibatalkan",
+                    "Data anda aman",
+                    "error"
+                )
+            }
+        })
+    }
+</script>
+</html>
