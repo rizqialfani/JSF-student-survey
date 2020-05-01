@@ -3,7 +3,7 @@ Tugas UTS - Form Survey Mahasiswa
 
 >Homepage
 
-http://ec2-3-88-174-187.compute-1.amazonaws.com
+https://mr.al-21296.s3.amazonaws.com/index.html
 
 
 >Form Survey Mahasiswa
